@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interactive Content - LMS</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #00b4d8, #007bff);
       color: white;
-      text-align: center;
       margin: 0;
       padding: 0;
-      height: 100vh;
+      text-align: center;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -26,46 +26,46 @@
 
     p {
       font-size: 18px;
-      margin: 10px 0;
-      max-width: 600px;
+      margin-bottom: 20px;
     }
 
-    .quiz-box {
+    .content-box {
       background: white;
       color: #007bff;
       border-radius: 10px;
-      padding: 20px;
-      width: 80%;
+      padding: 25px;
+      width: 90%;
       max-width: 500px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      margin-top: 20px;
+      text-align: left;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 10px 0;
     }
 
     button {
-      background-color: white;
-      color: #007bff;
+      background-color: #007bff;
+      color: white;
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 15px;
+      margin-top: 20px;
       transition: 0.3s;
     }
 
     button:hover {
       background-color: #0056b3;
-      color: white;
-    }
-
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
     }
 
     footer {
-      position: absolute;
-      bottom: 15px;
+      margin-top: 40px;
       font-size: 14px;
       color: #e0e0e0;
     }
@@ -74,39 +74,29 @@
 <body>
 
   <h1>Interactive Content</h1>
-  <p>Test your knowledge with this short P.E. activity! 💪</p>
+  <p>Engage with fun and educational activities designed to boost your physical fitness.</p>
 
-  <div class="quiz-box">
-    <h3>Question:</h3>
-    <p>Why is warming up important before doing physical exercises?</p>
-
-    <button onclick="checkAnswer('a')">A. It helps prepare your body and prevent injuries</button><br><br>
-    <button onclick="checkAnswer('b')">B. It makes you feel sleepy</button><br><br>
-    <button onclick="checkAnswer('c')">C. It cools your body down</button>
-
-    <p id="result"></p>
+  <div class="content-box">
+    <h3>🎮 Activities</h3>
+    <ul>
+      <li>Watch: “Warm-Up Techniques for Beginners”</li>
+      <li>Quiz: Physical Fitness Basics</li>
+      <li>Game: Stretch & Match Challenge</li>
+      <li>Video: Group Exercise Demo</li>
+    </ul>
+    <button onclick="goBack()">⬅️ Back to Personalized</button>
   </div>
-
-  <button onclick="nextPage()">Next ➡️ Teacher Tool</button>
 
   <footer>© 2025 Learning Management System | P.E. Section A</footer>
 
   <script>
-    function checkAnswer(answer) {
-      const result = document.getElementById('result');
-      if (answer === 'a') {
-        result.textContent = "✅ Correct! Warming up prepares your body and prevents injuries.";
-        result.style.color = "green";
-      } else {
-        result.textContent = "❌ Incorrect. Try again!";
-        result.style.color = "red";
-      }
-    }
-
-    function nextPage() {
-      window.location.href = "teacher.html";
+    function goBack() {
+      const params = new URLSearchParams(window.location.search);
+      const user = params.get('user');
+      window.location.href = "personalized.html?user=" + encodeURIComponent(user || '');
     }
   </script>
 
 </body>
 </html>
+

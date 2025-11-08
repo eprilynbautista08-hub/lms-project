@@ -10,7 +10,6 @@
       background-color: #f5f8ff;
       text-align: center;
       padding: 30px;
-      transition: background 0.4s ease;
     }
     h1 {
       color: #007bff;
@@ -89,15 +88,9 @@
   <p>P.E. Subject · Section A</p>
 
   <div class="flow">
-    <div class="step" data-page="link">
-      <img src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Link Icon" />
-      <p><b>LMS LINK</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
-
     <div class="step" data-page="login">
       <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Login Icon" />
-      <p><b>USERNAME LOGIN</b></p>
+      <p><b>LOGIN TO START</b></p>
     </div>
     <div class="arrow">⬇️</div>
 
@@ -131,70 +124,75 @@
     </div>
     <div class="arrow">⬇️</div>
 
-    <div class="step" data-page="qrcode">
-      <img src="https://cdn-icons-png.flaticon.com/512/482/482972.png" alt="QR Code" />
-      <p><b>QR CODE</b></p>
+    <div class="step" data-page="link">
+      <img src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="LMS Link" />
+      <p><b>LMS PORTAL</b></p>
     </div>
   </div>
 
   <div id="content"></div>
+
+  <!-- QR Code Section -->
+  <div class="qr-section">
+    <h3>Scan to Login</h3>
+    <canvas id="qr-canvas"></canvas>
+    <p style="font-size:14px; color:#555; margin-top:10px;">
+      or visit: <a href="https://eprilynbautista08-hub.github.io/lms-project/login.html" target="_blank">
+        https://eprilynbautista08-hub.github.io/lms-project/login.html
+      </a>
+    </p>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <script>
     const content = document.getElementById('content');
 
     const pages = {
-      link: `
-        <h2>LMS Portal Link</h2>
-        <p>Click below or scan the QR code to open the LUCST LMS Portal.</p>
-        <a href="https://lms.lucst.edu.ph" target="_blank" class="btn">Go to LMS</a>
-        <canvas id="qr-link"></canvas>
-      `,
       login: `
         <h2>Login</h2>
-        <p>This is a demo login page placeholder.</p>
+        <p>Scan the QR code or click below to log in.</p>
+        <a href="login.html" class="btn">Go to Login</a>
       `,
       personalized: `
         <h2>Personalized Learning</h2>
-        <p>Students will access customized lessons here.</p>
+        <p>Access your customized lessons and activities.</p>
       `,
       interactive: `
         <h2>Interactive Content</h2>
-        <p>Interactive videos, quizzes, and activities appear in this section.</p>
+        <p>Explore videos, quizzes, and exercises tailored to your progress.</p>
       `,
       teacher: `
         <h2>Teacher Tools</h2>
-        <p>Here teachers can manage classes, assignments, and grading tools.</p>
+        <p>Manage class records, assignments, and feedback tools.</p>
       `,
       parental: `
         <h2>Parental Portal</h2>
-        <p>Parents can monitor their child’s progress and communicate with teachers.</p>
+        <p>Monitor your child’s progress and send messages to the teacher.</p>
       `,
       progress: `
         <h2>Progress Tracking</h2>
-        <p>Displays student grades, attendance, and achievements.</p>
+        <p>View grades, attendance, and achievements in real time.</p>
       `,
-      qrcode: `
-        <h2>QR Code Access</h2>
-        <p>Scan to open LMS directly:</p>
-        <canvas id="qr-code"></canvas>
+      link: `
+        <h2>LMS Portal</h2>
+        <p>Visit the full LMS site.</p>
+        <a href="https://eprilynbautista08-hub.github.io/lms-project/" class="btn" target="_blank">Open LMS</a>
       `
     };
 
-    // Load content dynamically with fade effect
     document.querySelectorAll('.step').forEach(step => {
       step.addEventListener('click', () => {
         const key = step.dataset.page;
         content.innerHTML = pages[key];
         content.style.display = 'block';
         window.scrollTo({top: content.offsetTop, behavior: 'smooth'});
-        if (key === 'link') {
-          new QRious({element: document.getElementById('qr-link'), value: 'https://lms.lucst.edu.ph', size: 180});
-        }
-        if (key === 'qrcode') {
-          new QRious({element: document.getElementById('qr-code'), value: 'https://lms.lucst.edu.ph', size: 180});
-        }
       });
+    });
+
+    new QRious({
+      element: document.getElementById('qr-canvas'),
+      value: 'https://eprilynbautista08-hub.github.io/lms-project/login.html',
+      size: 180
     });
   </script>
 </body>

@@ -87,7 +87,7 @@
   <div class="portal-box">
     <div class="info">
       <h3>👦 Student Information</h3>
-      <p><b>Name:</b></p>
+      <p><b>Name:</b> <span id="username">Loading...</span></p>
       <p><b>Subject:</b> P.E. — Section A</p>
     </div>
 
@@ -114,9 +114,15 @@
 
   <script>
     function nextPage() {
-      window.location.href = "progress.html"; // Make sure progress.html exists in your project folder
+      window.location.href = "progress.html";
     }
+
+    // Get student name from URL
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get('user');
+    document.getElementById('username').textContent = user ? decodeURIComponent(user) : 'Unknown Student';
   </script>
 
 </body>
 </html>
+

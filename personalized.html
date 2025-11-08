@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personalized Learning - LMS</title>
   <style>
     body {
@@ -19,7 +19,7 @@
       align-items: center;
     }
 
-    h1 {
+    h1, h2 {
       font-size: 32px;
       margin-bottom: 10px;
     }
@@ -30,7 +30,7 @@
       max-width: 500px;
     }
 
-    .lesson {
+    .lesson, .sections {
       background: white;
       color: #007bff;
       border-radius: 10px;
@@ -42,25 +42,20 @@
       transition: transform 0.3s;
     }
 
-    .lesson:hover {
+    .lesson:hover, .sections:hover {
       transform: scale(1.02);
     }
 
-    button {
-      background-color: white;
+    .sections a {
+      display: block;
+      margin: 10px 0;
       color: #007bff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
       font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: 0.3s;
+      text-decoration: none;
     }
 
-    button:hover {
-      background-color: #0056b3;
-      color: white;
+    .sections a:hover {
+      color: #0056b3;
     }
 
     footer {
@@ -72,25 +67,31 @@
 </head>
 <body>
 
-  <h1>Personalized Learning</h1>
-  <p>Welcome to your personalized P.E. learning area. Here you’ll find lessons, activities, and exercises customized for you!</p>
+  <h2>Welcome, <span id="username"></span>!</h2>
+  <p>This is your personalized P.E. learning area. Explore your lessons and tools below.</p>
 
   <div class="lesson">
-    <h2>Today's Topic: <em>Physical Fitness and Warm-up Exercises</em></h2>
+    <h3>Today's Topic: <em>Physical Fitness and Warm-up Exercises</em></h3>
     <p>Warm-up exercises help your body prepare for physical activity by improving flexibility and preventing injuries.</p>
     <p>✅ Activity: Do 3 minutes of stretching before your next P.E. session.</p>
   </div>
 
-  <button onclick="nextPage()">Go to Interactive Content ➡️</button>
+  <div class="sections">
+    <h3>Explore Your LMS Tools:</h3>
+    <a href="parental.html">👨‍👩‍👧 Parental Portal</a>
+    <a href="progress.html">📊 Progress Tracking</a>
+    <a href="teacher.html">👩‍🏫 Teacher Tools</a>
+    <a href="interactive.html">🎮 Interactive Content</a>
+    <a href="https://eprilynbautista08-hub.github.io/lms-project/">🔗 LMS Homepage</a>
+  </div>
 
   <footer>© 2025 Learning Management System | P.E. Section A</footer>
 
   <script>
-    function nextPage() {
-      window.location.href = "interactive.html"; // Make sure interactive.html exists in your project folder
-    }
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get('user');
+    document.getElementById('username').textContent = user;
   </script>
 
 </body>
 </html>
-s
