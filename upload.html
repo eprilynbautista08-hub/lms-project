@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Upload – LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #007bff, #00b4d8);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    .upload-box {
+      background: white;
+      color: #007bff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    select, input, textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome, <span id="teacherName">Teacher</span></h1>
+  <p>Upload grades and assignments for students below:</p>
+
+  <div class="upload-box">
+    <label for="student">Select Student</label>
+    <select id="student">
+      <option value="">-- Select student --</option>
+      <option>ABELLO, LEXUS MC LAREN CASTILLO</option>
+      <option>BALCITA, DHAN JHERO ABUAN</option>
+      <option>DE GUZMAN, MJAY BELLO</option>
+      <option>FEDERICO, JAMES JARED ABUAN</option>
+      <option>FERRER, DENVER GOMEZ</option>
+      <!-- Add all other names here -->
+    </select>
+
+    <label for="grade">Grade</label>
+    <input type="text" id="grade" placeholder="Enter grade or score" />
+
+    <label for="assignment">Assignment / Feedback</label>
+    <textarea id="assignment" rows="4" placeholder="Enter assignment details or remarks"></textarea>
+
+    <button onclick="uploadData()">Upload</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const teacher = params.get('teacher');
+    document.getElementById('teacherName').textContent = teacher || 'Teacher';
+
+    function uploadData() {
+      const student = document.getElementById('student').value;
+      const grade = document.getElementById('grade').value;
+      const assignment = document.getElementById('assignment').value;
+
+      if (!student || !grade || !assignment) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      // For now, just show confirmation
+      alert(`Grade and assignment uploaded for ${student}!\nGrade: ${grade}\nRemarks: ${assignment}`);
+
+      // Clear fields
+      document.getElementById('student').value = '';
+      document.getElementById('grade').value = '';
+      document.getElementById('assignment').value = '';
+    }
+  </script>
+
+</body>
+</html>
