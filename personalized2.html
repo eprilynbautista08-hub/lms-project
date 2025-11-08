@@ -54,9 +54,21 @@
       border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
+      margin-top: 10px;
     }
     button:hover {
       background-color: #0056b3;
+    }
+    .debug-box {
+      background: #eef;
+      color: #333;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 30px auto;
+      text-align: left;
+      font-size: 14px;
+      white-space: pre-wrap;
     }
   </style>
 </head>
@@ -74,23 +86,42 @@
     <h3>📝 Submit Your Activity</h3>
     <textarea id="studentWork" rows="5" placeholder="Paste your activity or answer here..."></textarea>
     <button onclick="submitWork()">Submit</button>
+    <button onclick="goHome()">⬅️ Back to Home</button>
+  </div>
+
+  <div class="debug-box" id="debugBox">
+    <strong>🧪 Debug Info:</strong><br>Loading...
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const student = params.get('user');
-    document.getElementById('studentName').textContent = student;
+    document.getElementById('studentName').textContent = student || "Unknown";
 
-    const record = JSON.parse(localStorage.getItem(`lms_${student}`));
     const gradeBadge = document.getElementById('gradeBadge');
     const assignmentText = document.getElementById('assignmentText');
+    const debugBox = document.getElementById('debugBox');
 
-    if (record) {
-      gradeBadge.textContent = `${record.grade}`;
-      assignmentText.textContent = `📘 Assignment: ${record.assignment}`;
-    } else {
-      gradeBadge.textContent = `No grade yet`;
-      assignmentText.textContent = `No assignment uploaded`;
+    function loadStudentData() {
+      if (!student) {
+        gradeBadge.textContent = "No student found";
+        assignmentText.textContent = "Please log in with a valid name.";
+        debugBox.textContent = "⚠️ No student name in URL.\nExample: personalized.html?user=STUDENT_NAME";
+        return;
+      }
+
+      const record = JSON.parse(localStorage.getItem(`lms_${student}`));
+      const work = localStorage.getItem(`lms_work_${student}`);
+
+      if (record) {
+        gradeBadge.textContent = `${record.grade}`;
+        assignmentText.textContent = `📘 Assignment: ${record.assignment}`;
+      } else {
+        gradeBadge.textContent = `No grade yet`;
+        assignmentText.textContent = `No assignment uploaded`;
+      }
+
+      debugBox.textContent = `🧪 Debug Info:\n\nGrade & Assignment:\n${JSON.stringify(record, null, 2) || 'None'}\n\nSubmitted Work:\n${work || 'None'}`;
     }
 
     function submitWork() {
@@ -102,7 +133,14 @@
       localStorage.setItem(`lms_work_${student}`, work);
       alert("✅ Activity submitted!");
       document.getElementById('studentWork').value = '';
+      loadStudentData();
     }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    loadStudentData();
   </script>
 
 </body>
