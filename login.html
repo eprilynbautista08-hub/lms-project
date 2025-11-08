@@ -75,6 +75,11 @@
     margin-bottom: 10px;
     display: none;
   }
+  hr {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    margin: 20px 0;
+  }
 </style>
 </head>
 <body>
@@ -85,25 +90,86 @@
 
     <div id="error" class="error" role="alert"></div>
 
+    <!-- Student Login -->
     <label for="username">Student name</label>
     <select id="username" aria-label="Student name">
-      <option value="">-- Select your name --</option>
-      <option>ABELLO, LEXUS MC LAREN CASTILLO</option>
-      <option>ABUAN, DHAN JHERO BALCITA</option>
-      <option>ABUAN, JAMES JARED FEDERICO</option>
-      <option>ARELLANO, RINOA MIRICHEL BALAGOT</option>
-      <!-- Add more names as needed -->
+  <option value="">-- Select your name --</option>
+  <option>ABELLO, LEXUS MC LAREN CASTILLO</option>
+  <option>BALCITA, DHAN JHERO ABUAN</option>
+  <option>DE GUZMAN, MJAY BELLO</option>
+  <option>FEDERICO, JAMES JARED ABUAN</option>
+  <option>FERRER, DENVER GOMEZ</option>
+  <option>FLORENDO, SHAUN</option>
+  <option>JAVINA, CHRISTIAN JAYDEN MEDINA</option>
+  <option>LEPAGO, PAULO NUDO</option>
+  <option>ΜΑΡΑ, KYLE EDD NEO</option>
+  <option>MILANES, HARIES NOAH</option>
+  <option>PAJARA, MATT ETHAN BUMATAY</option>
+  <option>PERILLO, KHARL CEDRIC TANGALIN</option>
+  <option>TAMBO, LEBRON JACOB VENIEGAS</option>
+  <option>ZAMORANOS, JUSTIN LANCE CALICA</option>
+  <option>BALAGOT, RINOA MIRICHEL ARELLANO</option>
+  <option>CALASAGAN, PRINCESS ROSELLA GONZALE</option>
+  <option>DULATRE, ATHENNA JEANRIELLE TANGALIN</option>
+  <option>FLORESCA, SHANTAL ROZE ESTILLORE</option>
+  <option>LAGRIMAS, YESHUA DJEINNE CAMPOS</option>
+  <option>MAMAWAG, JORHAYNE GAMUETA</option>
+  <option>MOSTOLES, MARY ANGELA LOPEZ</option>
+  <option>PEREZ, SOPIA VERONICA PANTALEON</option>
+  <option>SHELUK, AKIAH GEILENE PEREYRA</option>
+  <option>TABALBAG, XYANA ZAI FUNDALES</option>
+  <option>BALATERA, MARVIN</option>
+  <option>BARANA, RICHARD</option>
+  <option>DELA ROSA, BRIEN JEROME</option>
+  <option>FELECIANO, PRINCE ARIEL</option>
+  <option>GAPUZ, KLIEN ASHER</option>
+  <option>KHAIRA, HARGUI</option>
+  <option>MENDOZA, GIAN LESTER</option>
+  <option>NARIZ, NICOLO ZACHARY</option>
+  <option>PEREYRA, JILO RABE</option>
+  <option>QUINONES, JEROME JIBRIEL</option>
+  <option>SIBAYAN, MHART AINZKEN</option>
+  <option>VARGAS, JUNEL DACOCO</option>
+  <option>VIDAL, GIVI KYLE</option>
+  <option>BARANA, ANN CRISSA MAE</option>
+  <option>CALICA, ELISHA JODE</option>
+  <option>DELA TONGA, HARVENCIL</option>
+  <option>DOCOT, FRANCES FAITH</option>
+  <option>GOMEZ, ERICH MAE</option>
+  <option>MANGASER, SEP JOERLYN</option>
+  <option>MONDATA, JANE TANYA</option>
+  <option>NIEVES, SEANA ELISHA</option>
+  <option>PERALTA, KAYREEYA</option>
+  <option>PASCUA, AMYRALD</option>
+  <option>RONQUILLO, KAYRENE</option>
+</select>
+
     </select>
 
     <label for="password">Password</label>
     <input id="password" type="password" placeholder="Enter password" autocomplete="off" />
 
     <div class="hint">
-      <strong>Demo password rule:</strong> <span id="pwRule">last name (no spaces, lowercase) + 2025</span><br>
-      Example: <em>ABELLO, ...</em> → <code>abello2025</code>
+      <strong>Student password rule:</strong> last name (no spaces, lowercase) + 2025<br>
+      Example: <code>abello2025</code>
     </div>
 
-    <button id="btnLogin">Login</button>
+    <button id="btnLogin">Login as Student</button>
+
+    <hr>
+
+    <!-- Teacher Login -->
+    <label for="teacherName">Teacher name</label>
+    <input id="teacherName" type="text" placeholder="Enter your name" />
+
+    <label for="teacherPassword">Password</label>
+    <input id="teacherPassword" type="password" placeholder="Enter password" autocomplete="off" />
+
+    <div class="hint">
+      <strong>Teacher password:</strong> <code>teacher2025</code>
+    </div>
+
+    <button id="btnTeacher">Login as Teacher</button>
 
     <small>Demo only — do not use real passwords here.</small>
   </div>
@@ -114,6 +180,10 @@
   const passInput = document.getElementById('password');
   const btn = document.getElementById('btnLogin');
   const error = document.getElementById('error');
+
+  const teacherName = document.getElementById('teacherName');
+  const teacherPass = document.getElementById('teacherPassword');
+  const btnTeacher = document.getElementById('btnTeacher');
 
   function buildCredentials() {
     const creds = {};
@@ -140,36 +210,47 @@
     error.style.display = 'none';
     const name = select.value;
     const pw = passInput.value || '';
-    if (!name) {
-      showError('Please select your name.');
-      return;
-    }
-    if (!pw) {
-      showError('Please enter your password.');
-      return;
-    }
+    if (!name) return showError('Please select your name.');
+    if (!pw) return showError('Please enter your password.');
 
     const expected = credentials[name];
-    if (!expected) {
-      showError('Selected name not found in credential list.');
-      return;
-    }
-
+    if (!expected) return showError('Selected name not found.');
     if (pw === expected) {
       localStorage.setItem('lms_current_user', name);
       const safeName = encodeURIComponent(name);
-      document.body.style.opacity = '0.8';
       btn.textContent = 'Logging in...';
       btn.disabled = true;
       setTimeout(()=> {
-        window.location.href = 'https://eprilynbautista08-hub.github.io/lms-project/personalized.html?user=' + safeName;
+        window.location.href = 'personalized.html?user=' + safeName;
       }, 900);
     } else {
-      showError('Incorrect password. Check the demo rule (last name + 2025).');
+      showError('Incorrect password. Check the rule.');
       passInput.value = '';
       passInput.focus();
     }
   });
+
+btnTeacher.addEventListener('click', ()=> {
+  error.style.display = 'none';
+  const name = teacherName.value.trim();
+  const pw = teacherPass.value.trim();
+  if (!name) return showError('Please enter your name.');
+  if (!pw) return showError('Please enter your password.');
+
+  // Only allow Ruby Campos to log in
+  if (name.toLowerCase() === 'ruby campos' && pw === 'teacher2025') {
+    const safeName = encodeURIComponent(name);
+    btnTeacher.textContent = 'Logging in...';
+    btnTeacher.disabled = true;
+    setTimeout(()=> {
+      window.location.href = 'upload.html?teacher=' + safeName;
+    }, 900);
+  } else {
+    showError('Incorrect teacher name or password.');
+    teacherPass.value = '';
+    teacherPass.focus();
+  }
+});
 
   function showError(txt) {
     error.style.display = 'block';

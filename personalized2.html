@@ -24,6 +24,20 @@
     h1 {
       margin-bottom: 10px;
     }
+    .grade-badge {
+      font-size: 40px;
+      font-weight: bold;
+      background: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .assignment-text {
+      font-size: 16px;
+      margin-top: 10px;
+    }
     textarea {
       width: 100%;
       margin: 10px 0;
@@ -51,11 +65,13 @@
   <h1>Welcome, <span id="studentName">Student</span></h1>
 
   <div class="info-box" id="infoBox">
-    <p>Loading your grade and assignment...</p>
+    <h2>📊 View My Grades</h2>
+    <div id="gradeBadge" class="grade-badge">Loading...</div>
+    <p id="assignmentText" class="assignment-text"></p>
   </div>
 
   <div class="upload-box">
-    <h3>Submit Your Activity</h3>
+    <h3>📝 Submit Your Activity</h3>
     <textarea id="studentWork" rows="5" placeholder="Paste your activity or answer here..."></textarea>
     <button onclick="submitWork()">Submit</button>
   </div>
@@ -66,15 +82,15 @@
     document.getElementById('studentName').textContent = student;
 
     const record = JSON.parse(localStorage.getItem(`lms_${student}`));
-    const infoBox = document.getElementById('infoBox');
+    const gradeBadge = document.getElementById('gradeBadge');
+    const assignmentText = document.getElementById('assignmentText');
 
     if (record) {
-      infoBox.innerHTML = `
-        <p><strong>Grade:</strong> ${record.grade}</p>
-        <p><strong>Assignment:</strong> ${record.assignment}</p>
-      `;
+      gradeBadge.textContent = `${record.grade}`;
+      assignmentText.textContent = `📘 Assignment: ${record.assignment}`;
     } else {
-      infoBox.innerHTML = `<p>No assignment uploaded yet.</p>`;
+      gradeBadge.textContent = `No grade yet`;
+      assignmentText.textContent = `No assignment uploaded`;
     }
 
     function submitWork() {
@@ -84,7 +100,7 @@
         return;
       }
       localStorage.setItem(`lms_work_${student}`, work);
-      alert("Activity submitted!");
+      alert("✅ Activity submitted!");
       document.getElementById('studentWork').value = '';
     }
   </script>
