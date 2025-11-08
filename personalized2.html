@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard – LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00b4d8, #007bff);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    .info-box, .upload-box {
+      background: white;
+      color: #007bff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome, <span id="studentName">Student</span></h1>
+
+  <div class="info-box" id="infoBox">
+    <p>Loading your grade and assignment...</p>
+  </div>
+
+  <div class="upload-box">
+    <h3>Submit Your Activity</h3>
+    <textarea id="studentWork" rows="5" placeholder="Paste your activity or answer here..."></textarea>
+    <button onclick="submitWork()">Submit</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const student = params.get('user');
+    document.getElementById('studentName').textContent = student;
+
+    const record = JSON.parse(localStorage.getItem(`lms_${student}`));
+    const infoBox = document.getElementById('infoBox');
+
+    if (record) {
+      infoBox.innerHTML = `
+        <p><strong>Grade:</strong> ${record.grade}</p>
+        <p><strong>Assignment:</strong> ${record.assignment}</p>
+      `;
+    } else {
+      infoBox.innerHTML = `<p>No assignment uploaded yet.</p>`;
+    }
+
+    function submitWork() {
+      const work = document.getElementById('studentWork').value;
+      if (!work) {
+        alert("Please enter your activity.");
+        return;
+      }
+      localStorage.setItem(`lms_work_${student}`, work);
+      alert("Activity submitted!");
+      document.getElementById('studentWork').value = '';
+    }
+  </script>
+
+</body>
+</html>
