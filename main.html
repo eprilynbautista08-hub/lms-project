@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Management System Flow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f8ff;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #007bff;
+    }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .step {
+      background: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 250px;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: 0.3s;
+    }
+    .step:hover {
+      transform: scale(1.03);
+    }
+    .step img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    .arrow {
+      font-size: 30px;
+      color: #007bff;
+      margin: 5px 0;
+    }
+    .qr-section {
+      margin-top: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    #qr-canvas {
+      width: 180px;
+      height: 180px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Learning Management System (LMS)</h1>
+  <p>P.E. Subject · Section A</p>
+
+  <div class="flow">
+
+    <a href="https://lms.lucst.edu.ph" target="_blank">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Link Icon">
+        <p><b>LMS LINK</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="login.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Login Icon">
+        <p><b>USERNAME LOGIN</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="personalized.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/2972/2972035.png" alt="Personalized Learning">
+        <p><b>PERSONALIZED LEARNING</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="interactive.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/1087/1087927.png" alt="Interactive Content">
+        <p><b>INTERACTIVE CONTENT</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="teacher.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/3944/3944337.png" alt="Teacher Tool">
+        <p><b>TEACHER TOOL</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="parental.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/554/554857.png" alt="Parental Portal">
+        <p><b>PARENTAL PORTAL</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="progress.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Progress Tracking">
+        <p><b>PROGRESS TRACKING</b></p>
+      </div>
+    </a>
+
+    <div class="arrow">⬇️</div>
+
+    <a href="qrcode.html">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/482/482972.png" alt="QR Code">
+        <p><b>QR CODE</b></p>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- QR Code Section -->
+  <div class="qr-section">
+    <h3>Scan to Open LMS</h3>
+    <canvas id="qr-canvas"></canvas>
+    <p style="font-size:14px; color:#555; margin-top:10px;">
+      or visit: <a href="https://lms.lucst.edu.ph" target="_blank">https://lms.lucst.edu.ph</a>
+    </p>
+  </div>
+
+  <!-- QR Code generator script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script>
+    const qr = new QRious({
+      element: document.getElementById('qr-canvas'),
+      value: 'https://lms.lucst.edu.ph', // your LMS URL
+      size: 180
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Tool - LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #007bff, #00b4d8);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .tools {
+      background: white;
+      color: #007bff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-right: 5px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 5px;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+      resize: none;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #e0e0e0;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Teacher Tool</h1>
+  <p>Manage your class, track progress, and send updates to students and parents.</p>
+
+  <div class="tools">
+    <div class="section">
+      <h3>📘 Create Lesson</h3>
+      <textarea placeholder="Enter lesson title or content here..."></textarea><br>
+      <button onclick="alert('Lesson created successfully!')">Save Lesson</button>
+    </div>
+
+    <div class="section">
+      <h3>📊 View Student Progress</h3>
+      <p>Student: <strong>P.E. Section A</strong></p>
+      <p>Progress: <strong>85% completed</strong></p>
+      <button onclick="alert('Student progress report downloaded!')">Download Report</button>
+    </div>
+
+    <div class="section">
+      <h3>📢 Send Announcement</h3>
+      <textarea placeholder="Write an announcement for your class..."></textarea><br>
+      <button onclick="alert('Announcement sent!')">Send</button>
+    </div>
+  </div>
+
+  <button style="margin-top:30px;" onclick="nextPage()">➡️ Go to Parental Portal</button>
+
+  <footer>© 2025 Learning Management System | P.E. Section A</footer>
+
+  <script>
+    function nextPage() {
+      window.location.href = "parent.html"; // Replace with actual parental portal file if needed
+    }
+  </script>
+
+</body>
+</html>

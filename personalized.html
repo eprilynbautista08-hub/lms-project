@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalized Learning - LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00b4d8, #007bff);
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+      max-width: 500px;
+    }
+
+    .lesson {
+      background: white;
+      color: #007bff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-top: 20px;
+      transition: transform 0.3s;
+    }
+
+    .lesson:hover {
+      transform: scale(1.02);
+    }
+
+    button {
+      background-color: white;
+      color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Personalized Learning</h1>
+  <p>Welcome to your personalized P.E. learning area. Here you’ll find lessons, activities, and exercises customized for you!</p>
+
+  <div class="lesson">
+    <h2>Today's Topic: <em>Physical Fitness and Warm-up Exercises</em></h2>
+    <p>Warm-up exercises help your body prepare for physical activity by improving flexibility and preventing injuries.</p>
+    <p>✅ Activity: Do 3 minutes of stretching before your next P.E. session.</p>
+  </div>
+
+  <button onclick="nextPage()">Go to Interactive Content ➡️</button>
+
+  <footer>© 2025 Learning Management System | P.E. Section A</footer>
+
+  <script>
+    function nextPage() {
+      window.location.href = "interactive.html"; // Make sure interactive.html exists in your project folder
+    }
+  </script>
+
+</body>
+</html>
+s

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parental Portal - LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #00b4d8, #007bff);
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .portal-box {
+      background: white;
+      color: #007bff;
+      border-radius: 10px;
+      padding: 25px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .info {
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 5px;
+      border: none;
+      padding: 10px;
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+      resize: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Parental Portal</h1>
+  <p>Monitor your child's progress and communicate with the teacher.</p>
+
+  <div class="portal-box">
+    <div class="info">
+      <h3>👦 Student Information</h3>
+      <p><b>Name:</b></p>
+      <p><b>Subject:</b> P.E. — Section A</p>
+    </div>
+
+    <hr style="border: 1px solid #007bff;">
+
+    <div class="info">
+      <h3>📊 Progress Report</h3>
+      <p><b>Current Progress:</b> 85%</p>
+      <p><b>Remarks:</b> Doing well in class participation and exercises.</p>
+    </div>
+
+    <hr style="border: 1px solid #007bff;">
+
+    <div class="info">
+      <h3>✉️ Message the Teacher</h3>
+      <textarea placeholder="Write your message here..."></textarea><br>
+      <button onclick="alert('Message sent to the teacher!')">Send Message</button>
+    </div>
+  </div>
+
+  <button onclick="nextPage()">➡️ Go to Progress Tracking</button>
+
+  <footer>© 2025 Learning Management System | P.E. Section A</footer>
+
+  <script>
+    function nextPage() {
+      window.location.href = "progress.html"; // Make sure progress.html exists in your project folder
+    }
+  </script>
+
+</body>
+</html>

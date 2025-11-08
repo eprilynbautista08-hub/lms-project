@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS Portal Link</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f8ff;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    p {
+      color: #333;
+      font-size: 18px;
+    }
+
+    a.btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    a.btn:hover {
+      background-color: #005dc1;
+    }
+
+    .qr-section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    #qr-canvas {
+      width: 200px;
+      height: 200px;
+      margin-top: 10px;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .back-btn {
+      margin-top: 25px;
+      background: #555;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to the LMS Portal</h1>
+  <p>Click the button below or scan the QR code to access your Learning Management System.</p>
+
+  <!-- ✅ Demo LMS link -->
+  <a class="btn" href="https://commons.deped.gov.ph" target="_blank">Go to LMS</a>
+
+  <div class="qr-section">
+    <h3>Scan to Open LMS</h3>
+    <canvas id="qr-canvas"></canvas>
+    <p class="note">or visit <a href="https://commons.deped.gov.ph" target="_blank">https://commons.deped.gov.ph</a></p>
+    <p class="note">✅ This is a demo LMS link. Replace with your school's LMS when available.</p>
+  </div>
+
+  <a class="btn back-btn" href="index.html">← Back to Home</a>
+
+  <footer>© 2025 Learning Management System | P.E. Section A</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script>
+    const qr = new QRious({
+      element: document.getElementById('qr-canvas'),
+      value: 'https://commons.deped.gov.ph',
+      size: 200
+    });
+  </script>
+
+</body>
+</html>

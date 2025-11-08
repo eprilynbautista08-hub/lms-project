@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LMS Login — P.E. Section A</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(90deg,#007bff,#00b4d8);color:#fff;height:100vh;display:flex;align-items:center;justify-content:center;margin:0}
+  .card{background:rgba(255,255,255,0.08);padding:22px;border-radius:12px;min-width:320px;max-width:480px;box-shadow:0 8px 30px rgba(2,6,23,0.2)}
+  h1{margin:0 0 8px;font-size:20px}
+  p.lead{margin:0 0 16px;opacity:.95}
+  select,input{width:100%;padding:10px;border-radius:8px;border:0;margin-bottom:12px;font-size:15px}
+  label{display:block;font-size:13px;margin-bottom:6px;opacity:.95}
+  .hint{font-size:13px;color:rgba(255,255,255,0.85);margin-bottom:12px}
+  button{background:#fff;color:#007bff;border:0;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;width:100%}
+  small{display:block;margin-top:10px;color:rgba(255,255,255,0.8);font-size:12px;text-align:center}
+  .error{color:#ffdede;background:#5a1313;padding:8px;border-radius:6px;margin-bottom:10px;display:none}
+</style>
+</head>
+<body>
+
+  <div class="card" role="main" aria-labelledby="title">
+    <h1 id="title">Username & Password Login</h1>
+    <p class="lead">Select your name and enter the password to access your personalized LMS.</p>
+
+    <div id="error" class="error" role="alert"></div>
+
+    <label for="username">Student name</label>
+    <select id="username" aria-label="Student name">
+      <option value="">-- Select your name --</option>
+      <!-- A -->
+      <option>ABELLO, LEXUS MC LAREN CASTILLO</option>
+      <option>ABUAN, DHAN JHERO BALCITA</option>
+      <option>ABUAN, JAMES JARED FEDERICO</option>
+      <option>ARELLANO, RINOA MIRICHEL BALAGOT</option>
+
+      <!-- B -->
+      <option>BARANA, ANN CRISSA MAE</option>
+      <option>BARANA, RICHARD</option>
+      <option>BELLO, MJAY DE GUZMAN</option>
+
+      <!-- C -->
+      <option>CALASAGAN, PRINCESS ROSELLA GONZALE</option>
+      <option>CALICA, ELISHA JODE</option>
+      <option>CAMPOS, YESHUA DJEINNE LAGRIMAS</option>
+      <option>CASTILLO, LEXUS MC LAREN ABELLO</option>
+
+      <!-- D -->
+      <option>DACOCO, JUNEL VARGAS</option>
+      <option>DE GUZMAN, MJAY BELLO</option>
+      <option>DELA ROSA, BRIEN JEROME</option>
+      <option>DELA TONGA, HARVENCIL</option>
+      <option>DOCOT, FRANCES FAITH</option>
+      <option>DULATRE, ATHENNA JEANRIELLE TANGALIN</option>
+
+      <!-- E–F -->
+      <option>ESTILLORE, SHANTAL ROZE FLORESCA</option>
+      <option>FELECIANO, PRINCE ARIEL</option>
+      <option>FEDERICO, JAMES JARED ABUAN</option>
+      <option>FERRER, DENVER GOMEZ</option>
+      <option>FLORENDO, SHAUN</option>
+      <option>FLORESCA, SHANTAL ROZE ESTILLORE</option>
+      <option>FUNDALES, XYANA ZAI TABALBAG</option>
+
+      <!-- G–H–J -->
+      <option>GAPUZ, KLIEN ASHER</option>
+      <option>GOMEZ, ERICH MAE</option>
+      <option>GOMEZ, DENVER FERRER</option>
+      <option>HARGUI, KHAIRA</option>
+      <option>JAVINA, CHRISTIAN JAYDEN MEDINA</option>
+
+      <!-- K–L–M -->
+      <option>KHAIRA, HARGUI</option>
+      <option>LAGRIMAS, YESHUA DJEINNE CAMPOS</option>
+      <option>LEPAGO, PAULO NUDO</option>
+      <option>MAMAWAG, JORHAYNE GAMUETA</option>
+      <option>MANGASER, SEP JOERLYN</option>
+      <option>MARA, KYLE EDD NEO</option>
+      <option>MENDOZA, GIAN LESTER</option>
+      <option>MILANES, HARIES NOAH</option>
+      <option>MONDATA, JANE TANYA</option>
+      <option>MOSTOLES, MARY ANGELA LOPEZ</option>
+
+      <!-- N–P -->
+      <option>NARIZ, NICOLO ZACHARY</option>
+      <option>NIEVES, SEANA ELISHA</option>
+      <option>NUDO, PAULO LEPAGO</option>
+      <option>PAJARA, MATT ETHAN BUMATAY</option>
+      <option>PANTALEON, SOPIA VERONICA PEREZ</option>
+      <option>PASCUA, AMYRALD</option>
+      <option>PERALTA, KAYREEYA</option>
+      <option>PEREYRA, AKIAH GEILENE SHELUK</option>
+      <option>PEREYRA, JILO RABE</option>
+      <option>PEREZ, SOPIA VERONICA PANTALEON</option>
+      <option>PERILLO, KHARL CEDRIC TANGALIN</option>
+      <option>PRINCESS ROSELLA, CALASAGAN GONZALE</option>
+
+      <!-- Q–R–S–T–V–Z -->
+      <option>QUINONES, JEROME JIBRIEL</option>
+      <option>RONQUILLO, KAYRENE</option>
+      <option>SHELUK, AKIAH GEILENE PEREYRA</option>
+      <option>SIBAYAN, MHART AINZKEN</option>
+      <option>TABALBAG, XYANA ZAI FUNDALES</option>
+      <option>TAMBO, LEBRON JACOB VENIEGAS</option>
+      <option>TANGALIN, ATHENNA JEANRIELLE DULATRE</option>
+      <option>TANGALIN, KHARL CEDRIC PERILLO</option>
+      <option>VENIEGAS, LEBRON JACOB TAMBO</option>
+      <option>VIDAL, GIVI KYLE</option>
+      <option>VARGAS, JUNEL DACOCO</option>
+      <option>ZAMORANOS, JUSTIN LANCE CALICA</option>
+    </select>
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Enter password" autocomplete="off" />
+
+    <div class="hint">
+      <strong>Demo password rule:</strong> <span id="pwRule">last name (no spaces, lowercase) + 2025</span><br>
+      Example: <em>ABELLO, ...</em> → <code>abello2025</code>
+    </div>
+
+    <button id="btnLogin">Login</button>
+
+    <small>Demo only — do not use real passwords here.</small>
+  </div>
+
+<script>
+(function(){
+  const select = document.getElementById('username');
+  const passInput = document.getElementById('password');
+  const btn = document.getElementById('btnLogin');
+  const error = document.getElementById('error');
+
+  // Build credentials map from the <select> options using the demo rule:
+  // password = lastName (remove spaces, lowercase) + "2025"
+  function buildCredentials() {
+    const creds = {};
+    for (let i = 0; i < select.options.length; i++) {
+      const opt = select.options[i];
+      if (!opt.value) continue; // skip placeholder
+      // option text format: "LASTNAME, FIRSTNAME..."
+      const text = opt.textContent.trim();
+      const parts = text.split(',');
+      const last = parts[0] ? parts[0].trim().replace(/\s+/g,'').toLowerCase() : '';
+      const pwd = last + '2025';
+      creds[text] = pwd;
+    }
+    return creds;
+  }
+
+  const credentials = buildCredentials();
+
+  // Optional: quickly show the password for the currently selected student (for teacher demo)
+  select.addEventListener('change', ()=> {
+    error.style.display = 'none';
+    passInput.value = '';
+    const name = select.value;
+    if (!name) return;
+    // show demo hint of password (comment out to hide)
+    // console.log('demo password for', name, '=', credentials[name]);
+  });
+
+  btn.addEventListener('click', ()=> {
+    error.style.display = 'none';
+    const name = select.value;
+    const pw = passInput.value || '';
+    if (!name) {
+      showError('Please select your name.');
+      return;
+    }
+    if (!pw) {
+      showError('Please enter your password.');
+      return;
+    }
+
+    const expected = credentials[name];
+    if (!expected) {
+      showError('Selected name not found in credential list.');
+      return;
+    }
+
+    if (pw === expected) {
+      // login success
+      localStorage.setItem('lms_current_user', name);
+      // redirect and pass user in query string
+      const safeName = encodeURIComponent(name);
+      document.body.style.opacity = '0.8';
+      btn.textContent = 'Logging in...';
+      setTimeout(()=> {
+        window.location.href = 'personalized.html?user=' + safeName;
+      }, 900);
+    } else {
+      showError('Incorrect password. Check the demo rule (last name + 2025).');
+      passInput.value = '';
+      passInput.focus();
+    }
+  });
+
+  function showError(txt) {
+    error.style.display = 'block';
+    error.textContent = txt;
+  }
+
+  // Expose credentials to window for teacher/debugging only (remove in production)
+  window.__demo_credentials = credentials;
+})();
+</script>
+
+</body>
+</html>
