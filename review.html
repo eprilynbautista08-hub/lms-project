@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Review Student Work – LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #007bff, #00b4d8);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    .review-box {
+      background: white;
+      color: #007bff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    select {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+    .data {
+      text-align: left;
+      margin-top: 20px;
+    }
+    p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Review Student Submissions</h1>
+  <p>Select a student to view their uploaded activity and your assigned grade.</p>
+
+  <div class="review-box">
+    <select id="studentSelect">
+      <option value="">-- Select student --</option>
+      <option>ABELLO, LEXUS MC LAREN CASTILLO</option>
+      <option>BALCITA, DHAN JHERO ABUAN</option>
+      <option>DE GUZMAN, MJAY BELLO</option>
+      <option>FEDERICO, JAMES JARED ABUAN</option>
+      <option>FERRER, DENVER GOMEZ</option>
+      <!-- Add more names here -->
+    </select>
+
+    <div class="data" id="studentData">
+      <p>No student selected.</p>
+    </div>
+  </div>
+
+  <script>
+    const select = document.getElementById('studentSelect');
+    const dataBox = document.getElementById('studentData');
+
+    select.addEventListener('change', () => {
+      const student = select.value;
+      if (!student) {
+        dataBox.innerHTML = `<p>No student selected.</p>`;
+        return;
+      }
+
+      const record = JSON.parse(localStorage.getItem(`lms_${student}`));
+      const work = localStorage.getItem(`lms_work_${student}`);
+
+      let html = `<p><strong>Student:</strong> ${student}</p>`;
+
+      if (record) {
+        html += `<p><strong>Grade:</strong> ${record.grade}</p>`;
+        html += `<p><strong>Assignment:</strong> ${record.assignment}</p>`;
+      } else {
+        html += `<p><strong>Grade:</strong> Not uploaded</p>`;
+        html += `<p><strong>Assignment:</strong> Not uploaded</p>`;
+      }
+
+      if (work) {
+        html += `<p><strong>Submitted Activity:</strong><br>${work}</p>`;
+      } else {
+        html += `<p><strong>Submitted Activity:</strong> No submission yet</p>`;
+      }
+
+      dataBox.innerHTML = html;
+    });
+  </script>
+
+</body>
+</html>
