@@ -76,11 +76,62 @@
 
   <h1>Welcome, <span id="studentName">Student</span></h1>
 
-  <div class="info-box" id="infoBox">
-    <h2>📊 View My Grades</h2>
-    <div id="gradeBadge" class="grade-badge">Loading...</div>
-    <p id="assignmentText" class="assignment-text"></p>
-  </div>
+  <div class="info-box">
+  <h2>🔐 Select Your Name to Log In</h2>
+  <select id="studentSelect" style="padding:10px; font-size:16px; border-radius:6px;">
+    <option value="">-- Choose your name --</option>
+    <option value="ABELLO, LEXUS MC LAREN CASTILLO">ABELLO, LEXUS MC LAREN CASTILLO</option>
+    <option value="BALCITA, DHAN JHERO ABUAN">BALCITA, DHAN JHERO ABUAN</option>
+    <option value="DE GUZMAN, MJAY BELLO">DE GUZMAN, MJAY BELLO</option>
+    <option value="FEDERICO, JAMES JARED ABUAN">FEDERICO, JAMES JARED ABUAN</option>
+    <option value="FERRER, DENVER GOMEZ">FERRER, DENVER GOMEZ</option>
+    <option value="FLORENDO, SHAUN">FLORENDO, SHAUN</option>
+    <option value="JAVINA, CHRISTIAN JAYDEN MEDINA">JAVINA, CHRISTIAN JAYDEN MEDINA</option>
+    <option value="LEPAGO, PAULO NUDO">LEPAGO, PAULO NUDO</option>
+    <option value="ΜΑΡΑ, KYLE EDD NEO">ΜΑΡΑ, KYLE EDD NEO</option>
+    <option value="MILANES, HARIES NOAH">MILANES, HARIES NOAH</option>
+    <option value="PAJARA, MATT ETHAN BUMATAY">PAJARA, MATT ETHAN BUMATAY</option>
+    <option value="PERILLO, KHARL CEDRIC TANGALIN">PERILLO, KHARL CEDRIC TANGALIN</option>
+    <option value="TAMBO, LEBRON JACOB VENIEGAS">TAMBO, LEBRON JACOB VENIEGAS</option>
+    <option value="ZAMORANOS, JUSTIN LANCE CALICA">ZAMORANOS, JUSTIN LANCE CALICA</option>
+    <option value="BALAGOT RINOA MIRICHEL ARELLANO">BALAGOT RINOA MIRICHEL ARELLANO</option>
+    <option value="CALASAGAN PRINCESS ROSELLA GONZALE">CALASAGAN PRINCESS ROSELLA GONZALE</option>
+    <option value="DULATRE, ATHENNA JEANRIELLE TANGALIN">DULATRE, ATHENNA JEANRIELLE TANGALIN</option>
+    <option value="FLORESCA, SHANTAL ROZE ESTILLORE">FLORESCA, SHANTAL ROZE ESTILLORE</option>
+    <option value="LAGRIMAS YESHUA DJEINNE CAMPOS">LAGRIMAS YESHUA DJEINNE CAMPOS</option>
+    <option value="MAMAWAG, JORHAYNE GAMUETA">MAMAWAG, JORHAYNE GAMUETA</option>
+    <option value="MOSTOLES, MARY ANGELA LOPEZ">MOSTOLES, MARY ANGELA LOPEZ</option>
+    <option value="8 PEREZ SOPIA VERONICA PANTALEON">8 PEREZ SOPIA VERONICA PANTALEON</option>
+    <option value="SHELUK AKIAH GEILENE PEREYRA">SHELUK AKIAH GEILENE PEREYRA</option>
+    <option value="TABALBAG XYANA ZAI FUNDALES">TABALBAG XYANA ZAI FUNDALES</option>
+    <option value="BALATERA, MARVIN">BALATERA, MARVIN</option>
+    <option value="BARANA RICHARD">BARANA RICHARD</option>
+    <option value="DELA ROSA, BRIEN JEROME">DELA ROSA, BRIEN JEROME</option>
+    <option value="FELECIANO, PRINCE ARIEL">FELECIANO, PRINCE ARIEL</option>
+    <option value="GAPUZ KLIEN ASHER">GAPUZ KLIEN ASHER</option>
+    <option value="KHAIRA.HARGUI">KHAIRA.HARGUI</option>
+    <option value="MENDOZA, GIAN LESTER">MENDOZA, GIAN LESTER</option>
+    <option value="NARIZ, NICOLO ZACHARY">NARIZ, NICOLO ZACHARY</option>
+    <option value="PEREYRA, JILO RABE">PEREYRA, JILO RABE</option>
+    <option value="QUINONES, JEROME JIBRIEL">QUINONES, JEROME JIBRIEL</option>
+    <option value="SIBAYAN, MHART AINZKEN">SIBAYAN, MHART AINZKEN</option>
+    <option value="VARGAS, JUNEL DACOCO">VARGAS, JUNEL DACOCO</option>
+    <option value="VIDAL, GIVI KYLE">VIDAL, GIVI KYLE</option>
+    <option value="BARANA, ANN CRISSA MAE">BARANA, ANN CRISSA MAE</option>
+    <option value="CALICA, ELISHA JODE">CALICA, ELISHA JODE</option>
+    <option value="DELA TONGA HARVENCIL">DELA TONGA HARVENCIL</option>
+    <option value="DOCOT FRANCES FAITH">DOCOT FRANCES FAITH</option>
+    <option value="GOMEZ ERICH MAE">GOMEZ ERICH MAE</option>
+    <option value="MANGASER, SEP JOERLYN">MANGASER, SEP JOERLYN</option>
+    <option value="MONDATA JANE TANYA">MONDATA JANE TANYA</option>
+    <option value="NIEVES, SEANA ELISHA">NIEVES, SEANA ELISHA</option>
+    <option value="PERALTA KAYREEYA">PERALTA KAYREEYA</option>
+    <option value="PASCUA AMYRALD">PASCUA AMYRALD</option>
+    <option value="RONQUILLO KAYRENE">RONQUILLO KAYRENE</option>
+  </select>
+  <br><br>
+  <button onclick="goToDashboard()">Go to My Dashboard</button>
+</div>
 
   <div class="upload-box">
     <h3>📝 Submit Your Activity</h3>
@@ -124,22 +175,14 @@
       debugBox.textContent = `🧪 Debug Info:\n\nGrade & Assignment:\n${JSON.stringify(record, null, 2) || 'None'}\n\nSubmitted Work:\n${work || 'None'}`;
     }
 
-    function submitWork() {
-      const work = document.getElementById('studentWork').value;
-      if (!work) {
-        alert("Please enter your activity.");
-        return;
-      }
-      localStorage.setItem(`lms_work_${student}`, work);
-      alert("✅ Activity submitted!");
-      document.getElementById('studentWork').value = '';
-      loadStudentData();
-    }
-
-    function goHome() {
-      window.location.href = "index.html";
-    }
-
+    function goToDashboard() {
+  const selected = document.getElementById('studentSelect').value;
+  if (!selected) {
+    alert("Please select your name.");
+    return;
+  }
+  window.location.href = `personalized.html?user=${encodeURIComponent(selected)}`;
+}
     loadStudentData();
   </script>
 
