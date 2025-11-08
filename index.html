@@ -148,40 +148,48 @@
   const content = document.getElementById('content');
 
   const pages = {
-    login: `
-      <h2>Login</h2>
-      <p>Scan the QR code or click below to log in.</p>
-      <a href="login.html" class="btn">Go to Login</a>
-    `,
-    personalized: `
-      <h2>Personalized Learning</h2>
-      <p>Access your customized lessons, view your grades, and submit your activities.</p>
-      <a href="personalized.html?user=YOUR_NAME_HERE" class="btn">Open My Dashboard</a>
-    `,
-    interactive: `
-      <h2>Interactive Content</h2>
-      <p>Explore videos, quizzes, and exercises tailored to your progress.</p>
-    `,
-    teacher: `
-      <h2>Teacher Tools</h2>
-      <p>Upload grades and assignments for students.</p>
-      <a href="upload.html?teacher=Ruby%20Campos" class="btn">Go to Upload Page</a>
-    `,
-    parental: `
-      <h2>Parental Portal</h2>
-      <p>Monitor your child’s progress and send messages to the teacher.</p>
-    `,
-    progress: `
-      <h2>Progress Tracking</h2>
-      <p>View grades, attendance, and achievements in real time.</p>
-      <a href="review.html" class="btn">Review Student Submissions</a>
-    `,
-    link: `
-      <h2>LMS Portal</h2>
-      <p>Visit the full LMS site.</p>
-      <a href="https://eprilynbautista08-hub.github.io/lms-project/" class="btn" target="_blank">Open LMS</a>
-    `
-  };
+  login: `
+    <h2>Login</h2>
+    <p>Scan the QR code or click below to log in.</p>
+    <a href="login.html" class="btn">Go to Login</a>
+  `,
+  personalized: `
+    <h2>Personalized Learning</h2>
+    <p>Access your customized lessons, view your grades, and submit your activities.</p>
+    <a href="personalized.html?user=ABELLO, LEXUS MC LAREN CASTILLO" class="btn">Open My Dashboard</a>
+  `,
+  interactive: `
+    <h2>Interactive Content</h2>
+    <p>Explore videos, quizzes, and exercises tailored to your progress.</p>
+    <a href="interactive.html" class="btn">Explore Interactive Content</a>
+  `,
+  teacher: `
+    <h2>Teacher Tools</h2>
+    <p>Upload grades and assignments for students.</p>
+    <a href="upload.html?teacher=Ruby%20Campos" class="btn">Go to Upload Page</a>
+  `,
+  parental: `
+    <h2>Parental Portal</h2>
+    <p>Monitor your child’s progress and send messages to the teacher.</p>
+    <a href="parental.html" class="btn">Open Parental Portal</a>
+  `,
+  progress: `
+    <h2>Progress Tracking</h2>
+    <p>View grades, attendance, and achievements in real time.</p>
+    <a href="progress.html" class="btn">Track Progress</a>
+  `,
+  link: `
+    <h2>LMS Portal</h2>
+    <p>Visit the full LMS site.</p>
+    <a href="https://eprilynbautista08-hub.github.io/lms-project/" class="btn" target="_blank">Open LMS</a>
+  `,
+  review: `
+    <h2>Review Student Submissions</h2>
+    <p>View submitted activities and uploaded grades.</p>
+    <a href="review.html" class="btn">Open Review Page</a>
+  `
+};
+
 
   document.querySelectorAll('.step').forEach(step => {
     step.addEventListener('click', () => {
