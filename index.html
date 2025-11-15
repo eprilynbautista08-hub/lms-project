@@ -1,210 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LMS Flow – Single Page App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f8ff;
-      text-align: center;
-      padding: 30px;
-    }
-    h1 {
-      color: #007bff;
-    }
-    .flow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
-    .step {
-      background: white;
-      border-radius: 10px;
-      padding: 15px 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 250px;
-      margin: 10px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.25s;
-    }
-    .step:hover {
-      transform: scale(1.04);
-    }
-    .step img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
-    }
-    .arrow {
-      font-size: 30px;
-      color: #007bff;
-      margin: 5px 0;
-    }
-    #content {
-      max-width: 700px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(20px);}
-      to {opacity:1; transform: translateY(0);}
-    }
-    .btn {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #005dc1;
-    }
-    canvas {
-      margin-top: 15px;
-      width: 180px;
-      height: 180px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Learning Management System (LMS)</h1>
-  <p>P.E. Subject · Section A</p>
+body {
+  font-family: Arial, sans-serif;
+  background: url('https://copilot.microsoft.com/th/id/BCO.b9a72fb2-c713-4f76-832d-ae5f0d5425d8.png') no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  padding: 30px;
+  color: #003366;
+}
 
-  <div class="flow">
-    <div class="step" data-page="login">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Login Icon" />
-      <p><b>LOGIN TO START</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
+h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #000;
+}
 
-    <div class="step" data-page="personalized">
-      <img src="https://cdn-icons-png.flaticon.com/512/2972/2972035.png" alt="Personalized Learning" />
-      <p><b>PERSONALIZED LEARNING</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
+.flow {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 320px;
+  margin: 0 auto;
+}
 
-    <div class="step" data-page="interactive">
-      <img src="https://cdn-icons-png.flaticon.com/512/1087/1087927.png" alt="Interactive Content" />
-      <p><b>INTERACTIVE CONTENT</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
+.step {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 250px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s;
+  cursor: pointer;
+}
 
-    <div class="step" data-page="teacher">
-      <img src="https://cdn-icons-png.flaticon.com/512/3944/3944337.png" alt="Teacher Tool" />
-      <p><b>TEACHER TOOL</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
+.step:hover {
+  transform: scale(1.04);
+}
 
-    <div class="step" data-page="parental">
-      <img src="https://cdn-icons-png.flaticon.com/512/554/554857.png" alt="Parental Portal" />
-      <p><b>PARENTAL PORTAL</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
+.step img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
 
-    <div class="step" data-page="progress">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Progress Tracking" />
-      <p><b>PROGRESS TRACKING</b></p>
-    </div>
-    <div class="arrow">⬇️</div>
+.arrow {
+  font-size: 30px;
+  color: #007bff;
+  margin: 5px 0;
+}
 
-    <div class="step" data-page="link">
-      <img src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="LMS Link" />
-      <p><b>LMS PORTAL</b></p>
-    </div>
-  </div>
+#content {
+  max-width: 700px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
 
-  <div id="content"></div>
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
 
-  <!-- QR Code Section -->
-  <div class="qr-section">
-    <h3>Scan to Login</h3>
-    <canvas id="qr-canvas"></canvas>
-    <p style="font-size:14px; color:#555; margin-top:10px;">
-      or visit: <a href="https://eprilynbautista08-hub.github.io/lms-project/login.html" target="_blank">
-        https://eprilynbautista08-hub.github.io/lms-project/login.html
-      </a>
-    </p>
-  </div>
+.btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-<script>
-  const content = document.getElementById('content');
+.btn:hover {
+  background: #005dc1;
+}
 
-  const pages = {
-  login: `
-    <h2>Login</h2>
-    <p>Scan the QR code or click below to log in.</p>
-    <a href="login.html" class="btn">Go to Login</a>
-  `,
-  personalized: `
-    <h2>Personalized Learning</h2>
-    <p>Access your customized lessons, view your grades, and submit your activities.</p>
-    <a href="personalized.html?user=ABELLO, LEXUS MC LAREN CASTILLO" class="btn">Open My Dashboard</a>
-  `,
-  interactive: `
-    <h2>Interactive Content</h2>
-    <p>Explore videos, quizzes, and exercises tailored to your progress.</p>
-    <a href="interactive.html" class="btn">Explore Interactive Content</a>
-  `,
-  teacher: `
-    <h2>Teacher Tools</h2>
-    <p>Upload grades and assignments for students.</p>
-    <a href="upload.html?teacher=Ruby%20Campos" class="btn">Go to Upload Page</a>
-  `,
-  parental: `
-    <h2>Parental Portal</h2>
-    <p>Monitor your child’s progress and send messages to the teacher.</p>
-    <a href="parental.html" class="btn">Open Parental Portal</a>
-  `,
-  progress: `
-    <h2>Progress Tracking</h2>
-    <p>View grades, attendance, and achievements in real time.</p>
-    <a href="progress.html" class="btn">Track Progress</a>
-  `,
-  link: `
-    <h2>LMS Portal</h2>
-    <p>Visit the full LMS site.</p>
-    <a href="https://eprilynbautista08-hub.github.io/lms-project/" class="btn" target="_blank">Open LMS</a>
-  `,
-  review: `
-    <h2>Review Student Submissions</h2>
-    <p>View submitted activities and uploaded grades.</p>
-    <a href="review.html" class="btn">Open Review Page</a>
-  `
-};
+.qr-section {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: inline-block;
+}
 
+canvas {
+  margin-top: 15px;
+  width: 180px;
+  height: 180px;
+}
 
-  document.querySelectorAll('.step').forEach(step => {
-    step.addEventListener('click', () => {
-      const key = step.dataset.page;
-      content.innerHTML = pages[key];
-      content.style.display = 'block';
-      window.scrollTo({top: content.offsetTop, behavior: 'smooth'});
-    });
-  });
-
-  new QRious({
-    element: document.getElementById('qr-canvas'),
-    value: 'https://eprilynbautista08-hub.github.io/lms-project/login.html',
-    size: 180
-  });
-</script>
-</body>
-</html>
